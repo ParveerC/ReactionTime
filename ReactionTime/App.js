@@ -13,7 +13,7 @@ export default function App() {
     setReactionTime(null);
 
     // Random delay between 2 to 5 seconds
-    const delay = Math.floor(Math.random() * 3000) + 2000;
+    const delay = Math.floor(Math.random() * 2000) + 2000;
 
     timeoutRef.current = setTimeout(() => {
       setMessage('Tap now!');
@@ -25,11 +25,13 @@ export default function App() {
     if (message === 'Tap now!') {
       const endTime = Date.now();
       setReactionTime(endTime - startTime);
-      setMessage('Select a test to start again');
+      setMessage('Press to start the reaction test');
       clearTimeout(timeoutRef.current);
     } else if (message === 'Wait for it...') {
       setMessage('Too soon! Press to try again.');
       clearTimeout(timeoutRef.current);
+    } else {
+      startTest();
     }
   };
 
